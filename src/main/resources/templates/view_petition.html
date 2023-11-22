@@ -6,6 +6,26 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <style>
+        /* Custom styles for the signees container */
+        .signees-container {
+            background-color: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 5px;
+            padding: 15px;
+            margin-top: 20px;
+        }
+
+        .signees-list {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .signee-item {
+            border-bottom: 1px solid #ced4da;
+            padding: 10px 0;
+        }
+
         body {
             background-color: #f8f9fa;
         }
@@ -73,7 +93,8 @@
     <div class="petition-details">
         <h3 th:text="${petition.name}"></h3>
         <p th:text="${petition.description}"></p>
-        <form action="/sign_petition" method="post">
+        <form th:action="@{/sign_petition}" th:object="${signee}" method="post">
+            <input type="hidden" name="id" th:value="${petition.id}"/>
             <div class="form-group">
                 <label for="name">Your Name:</label>
                 <input type="text" class="form-control" id="name" name="name" required>
@@ -84,6 +105,16 @@
             </div>
             <button type="submit" class="btn btn-sign">Sign Petition</button>
         </form>
+
+        <div class="mt-4 signees-container">
+            <h3>Signees</h3>
+            <ul class="signees-list">
+                <li th:each="signee : ${petition.signees}" class="signee-item">
+                    <span th:text="${signee.name}"></span> - <span th:text="${signee.email}"></span>
+                </li>
+            </ul>
+        </div>
+
     </div>
 </div>
 
