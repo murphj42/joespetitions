@@ -1,10 +1,82 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Results</title>
+    <!-- Include Bootstrap CSS link here -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+          crossorigin="anonymous">
+    <!-- styling  -->
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+
+        .container {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-top: 50px;
+        }
+
+        h2 {
+            color: #007bff;
+        }
+
+        .list-group-item {
+            background-color: #ffffff;
+            margin-top: 10px;
+        }
+    </style>
 </head>
 <body>
+<!-- Navigation Bar -->
+<nav class="navbar navbar-expand navbar-light bg-light">
+    <a class="navbar-brand" href="#">Petition App</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/view_all}">View All Petitions</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/create_petition}">Create Petition</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/search_petitions}">Search Petitions</a>
+            </li>
+        </ul>
+    </div>
+</nav>
 
+<!-- Search Results -->
+<div class="container">
+    <h2>Search Results</h2>
+
+    <!-- Display search results -->
+    <div th:each="petition : ${searchResults}" class="list-group-item">
+        <h4>
+            <a th:href="@{/view_petition(id=${petition.id})}" th:text="${petition.name}"></a>
+        </h4>
+        <p th:text="${petition.description}"></p>
+    </div>
+</div>
+
+<!-- Include Bootstrap JS and your script.js file -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"
+        integrity="sha384-ZTpU2ZFqGk1pKFz37lIjw5I0EtTzfbjU2QzKu7Df35sDaEErvHjo5JsNVTy5iU9p"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
 </body>
 </html>
