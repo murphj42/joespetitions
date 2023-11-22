@@ -105,9 +105,15 @@ public class PetitionController implements ApplicationRunner {
         List<Petition> samplePetitions = new ArrayList<>();
         Petition p1 = new Petition();
         p1.setName("Save the Bees");
-        p1.setDescription("We need honey!!!");
+        p1.setDescription("Protect the bee population for a sustainable environment.");
         p1.setId(UUID.randomUUID().toString());
         samplePetitions.add(p1);
+
+        Petition p2 = new Petition();
+        p2.setName("Plant Trees, Save Earth");
+        p2.setDescription("Join us in planting trees to combat climate change.");
+        p2.setId(UUID.randomUUID().toString());
+        samplePetitions.add(p2);
 
         return samplePetitions;
     }
