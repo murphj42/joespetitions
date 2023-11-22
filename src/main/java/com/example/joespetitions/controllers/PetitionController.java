@@ -2,6 +2,8 @@ package com.example.joespetitions.controllers;
 
 import com.example.joespetitions.model.Petition;
 import com.example.joespetitions.model.User;
+import org.springframework.boot.ApplicationArguments;
+import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -12,9 +14,10 @@ import java.util.UUID;
 import java.util.stream.Collectors;
 
 @Controller
-public class PetitionController {
+public class PetitionController implements ApplicationRunner {
 
     private List<Petition> petitions = new ArrayList<>(); // Your data structure to store petitions
+
 
     @GetMapping("/create_petition")
     public String showCreatePetitionForm(Model model) {
@@ -92,5 +95,21 @@ public class PetitionController {
                 .orElse(null);
     }
 
-    // Additional methods for searching, etc.
+    @Override
+    public void run(ApplicationArguments args) throws Exception {
+        List<Petition> samplePetitions = generateSamplePetitions();
+        this.petitions.addAll(samplePetitions);
+    }
+
+    private List<Petition> generateSamplePetitions() {
+        List<Petition> samplePetitions = new ArrayList<>();
+        Petition p1 = new Petition();
+        p1.setName("Save the Bees");
+        p1.setDescription("We need honey!!!");
+        p1.setId(UUID.randomUUID().toString());
+        samplePetitions.add(p1);
+
+        return samplePetitions;
+    }
+
 }
