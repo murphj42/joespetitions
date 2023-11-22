@@ -1,28 +1,85 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Search Petitions</title>
+    <!-- Include Bootstrap CSS link here -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+
+        .container {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-top: 50px;
+        }
+
+        h2 {
+            color: #007bff;
+        }
+
+        .search-form {
+            margin-top: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .btn-search {
+            background-color: #007bff;
+            color: #ffffff;
+        }
+    </style>
 </head>
 <body>
-<h1>Search Petitions</h1>
-<!-- Add a search form -->
-<form action="/search-petitions" method="get">
-    <!-- Search input field -->
-    <label for="search">Search:</label>
-    <input type="text" id="search" name="search" required>
+<!-- Navigation Bar -->
+<nav class="navbar navbar-expand navbar-light bg-light">
+    <a class="navbar-brand" href="#">Petition App</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/view_all}">View All Petitions</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/create_petition}">Create Petition</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/search_petitions}">Search Petitions</a>
+            </li>
+        </ul>
+    </div>
+</nav>
 
-    <!-- Submit button -->
-    <button type="submit">Search</button>
-</form>
+<!-- Search Petitions Form -->
+<div class="container mt-5">
+    <h2>Search Petitions</h2>
+    <form action="/search_petitions" method="post" class="search-form">
+        <div class="form-group">
+            <label for="searchTerm">Search Term:</label>
+            <input type="text" class="form-control" id="searchTerm" name="searchTerm" required>
+        </div>
+        <button type="submit" class="btn btn-search">Search Petitions</button>
+    </form>
+</div>
 
-<!-- Display search results -->
-<ul>
-    <!-- Use a loop to iterate through search results and display them -->
-    <li><a href="/petition/1">Petition 1</a></li>
-    <li><a href="/petition/2">Petition 2</a></li>
-    <!-- Add more as needed -->
-</ul>
+<!-- Include Bootstrap JS and your script.js file -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"
+        integrity="sha384-ZTpU2ZFqGk1pKFz37lIjw5I0EtTzfbjU2QzKu7Df35sDaEErvHjo5JsNVTy5iU9p"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
 </body>
 </html>
