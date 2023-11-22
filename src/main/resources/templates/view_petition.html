@@ -1,27 +1,101 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>View Petition</title>
+    <!-- Include Bootstrap CSS link here -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+
+        .container {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-top: 50px;
+        }
+
+        h2 {
+            color: #007bff;
+        }
+
+        .petition-details {
+            border: 1px solid #dee2e6;
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+
+        .petition-details h3 {
+            color: #007bff;
+        }
+
+        .petition-details p {
+            color: #495057;
+        }
+
+        .btn-sign {
+            background-color: #007bff;
+            color: #ffffff;
+        }
+    </style>
 </head>
 <body>
-<h1>View Petition</h1>
-<!-- Display petition details -->
-<h2>Petition Title</h2>
-<p>Petition Description</p>
+<!-- Navigation Bar -->
+<!-- Navigation Bar -->
+<nav class="navbar navbar-expand navbar-light bg-light">
+    <a class="navbar-brand" href="#">Petition App</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/view_all}">View All Petitions</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/create_petition}">Create Petition</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/search_petitions}">Search Petitions</a>
+            </li>
+        </ul>
+    </div>
+</nav>
 
-<!-- Add a form for signing the petition -->
-<form action="/sign-petition" method="post">
-    <!-- Signer details fields (e.g., name, email) -->
-    <label for="name">Your Name:</label>
-    <input type="text" id="name" name="name" required>
+<!-- Display Petition Details -->
+<div class="container mt-5">
+    <h2>View Petition Details</h2>
+    <div class="petition-details">
+        <h3 th:text="${petition.name}"></h3>
+        <p th:text="${petition.description}"></p>
+        <form action="/sign_petition" method="post">
+            <div class="form-group">
+                <label for="name">Your Name:</label>
+                <input type="text" class="form-control" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Your Email:</label>
+                <input type="email" class="form-control" id="email" name="email" required>
+            </div>
+            <button type="submit" class="btn btn-sign">Sign Petition</button>
+        </form>
+    </div>
+</div>
 
-    <label for="email">Your Email:</label>
-    <input type="email" id="email" name="email" required>
-
-    <!-- Submit button -->
-    <button type="submit">Sign Petition</button>
-</form>
+<!-- Include Bootstrap JS and your script.js file -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"
+        integrity="sha384-ZTpU2ZFqGk1pKFz37lIjw5I0EtTzfbjU2QzKu7Df35sDaEErvHjo5JsNVTy5iU9p"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
 </body>
 </html>
