@@ -108,6 +108,9 @@
 
         <div class="mt-4 signees-container">
             <h3>Signees</h3>
+            <ul th:if="${#lists.isEmpty(petition.signees)}" class="signees-list">
+                <li class="signee-item">No signatures yet!</li>
+            </ul>
             <ul class="signees-list">
                 <li th:each="signee : ${petition.signees}" class="signee-item">
                     <span th:text="${signee.name}"></span> - <span th:text="${signee.email}"></span>
