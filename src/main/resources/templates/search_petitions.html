@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Petitions</title>
+</head>
+<body>
+<h1>Search Petitions</h1>
+<!-- Add a search form -->
+<form action="/search-petitions" method="get">
+    <!-- Search input field -->
+    <label for="search">Search:</label>
+    <input type="text" id="search" name="search" required>
+
+    <!-- Submit button -->
+    <button type="submit">Search</button>
+</form>
+
+<!-- Display search results -->
+<ul>
+    <!-- Use a loop to iterate through search results and display them -->
+    <li><a href="/petition/1">Petition 1</a></li>
+    <li><a href="/petition/2">Petition 2</a></li>
+    <!-- Add more as needed -->
+</ul>
+</body>
+</html>

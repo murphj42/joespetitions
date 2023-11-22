@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Petition</title>
+</head>
+<body>
+<h1>View Petition</h1>
+<!-- Display petition details -->
+<h2>Petition Title</h2>
+<p>Petition Description</p>
+
+<!-- Add a form for signing the petition -->
+<form action="/sign-petition" method="post">
+    <!-- Signer details fields (e.g., name, email) -->
+    <label for="name">Your Name:</label>
+    <input type="text" id="name" name="name" required>
+
+    <label for="email">Your Email:</label>
+    <input type="email" id="email" name="email" required>
+
+    <!-- Submit button -->
+    <button type="submit">Sign Petition</button>
+</form>
+</body>
+</html>
