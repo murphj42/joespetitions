@@ -115,6 +115,36 @@ public class PetitionController implements ApplicationRunner {
         p2.setId(UUID.randomUUID().toString());
         samplePetitions.add(p2);
 
+        User u1 = new User();
+        u1.setName("Donald Trump");
+        u1.setEmail("TheDonald@whitehouse.com");
+        p1.addSignee(u1);
+
+        User u2 = new User();
+        u2.setName("Joe Biden");
+        u2.setEmail("sleepyjoe@whitehouse.com");
+        p2.addSignee(u2);
+
+        User u3 = new User();
+        u3.setName("Barack Obama");
+        u3.setEmail("bobby@whitehouse.com");
+        p2.addSignee(u3);
+
+        User u4 = new User();
+        u4.setName("Rishi Sunak");
+        u4.setEmail("strongandstable@cabinet.co.uk");
+        p1.addSignee(u4);
+
+        User u5 = new User();
+        u5.setName("Leo Varadkar");
+        u5.setEmail("leotheleak@oireachtas.ie");
+        p1.addSignee(u5);
+
+        User u6 = new User();
+        u6.setName("Dwayne Johnson");
+        u6.setEmail("Rock4Prez@gmail.com");
+        p1.addSignee(u6);
+
         return samplePetitions;
     }
 
