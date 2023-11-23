@@ -2,9 +2,10 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>View All Petitions</title>
-    <!-- Include Bootstrap CSS link here -->
+    <!-- Bootstrap CSS link  -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <!-- custom styling -->
     <style>
         body {
             background-color: #f8f9fa;
@@ -44,63 +45,64 @@
     </style>
 </head>
 <body>
-<!-- Navigation Bar -->
-<!-- Navigation Bar -->
-<nav class="navbar navbar-expand navbar-light bg-light">
-    <a class="navbar-brand" href="#">Joe's Petitions</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
-                <a class="nav-link" th:href="@{/view_all}">View All Petitions</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" th:href="@{/create_petition}">Create Petition</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" th:href="@{/search_petitions}">Search Petitions</a>
-            </li>
-        </ul>
-    </div>
-</nav>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand navbar-light bg-light">
+        <a class="navbar-brand" href="#">Joe's Petitions</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <!-- div to hold navbar buttons -->
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/view_all}">View All Petitions</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/create_petition}">Create Petition</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/search_petitions}">Search Petitions</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
 
-<!-- Display All Petitions -->
-<div class="container mt-5">
-    <h2>View All Petitions</h2>
+    <!-- Display All Petitions -->
+    <div class="container mt-5">
+        <h2>View All Petitions</h2>
 
-    <div th:each="petition : ${petitions}" class="petition mb-4">
+        <!-- loop through list of petitions, show name, desription, and number of current signatures for each petition -->
+        <div th:each="petition : ${petitions}" class="petition mb-4">
 
-        <div class="row">
-            <div class="col-md-8">
-                <h3 class="card-title" th:text="${petition.name}"></h3>
-                <p class="card-text" th:text="${petition.description}"></p>
-                <a th:href="@{/view_petition(id=${petition.id})}" class="btn btn-primary">View Details</a>
-            </div>
-            <div class="col-md- text-center">
-                <div class="text-muted text-center">
-                    <h6 class="mb-2 pt-4">Signatures:</h6>
-                    <p class="card-text" th:text="${petition.signees.size()}"></p>
+            <div class="row">
+                <div class="col-md-8">
+                    <h3 class="card-title" th:text="${petition.name}"></h3>
+                    <p class="card-text" th:text="${petition.description}"></p>
+                    <a th:href="@{/view_petition(id=${petition.id})}" class="btn btn-primary">View Details</a>
+                </div>
+                <div class="col-md- text-center">
+                    <div class="text-muted text-center">
+                        <h6 class="mb-2 pt-4">Signatures:</h6>
+                        <p class="card-text" th:text="${petition.signees.size()}"></p>
+                    </div>
                 </div>
             </div>
         </div>
+
     </div>
 
-</div>
+    <!-- Bootstrap JS and custom script.js file -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+            crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"
+            integrity="sha384-ZTpU2ZFqGk1pKFz37lIjw5I0EtTzfbjU2QzKu7Df35sDaEErvHjo5JsNVTy5iU9p"
+            crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"></script>
+    <script src="/static/js/script.js"></script>
 
-<!-- Include Bootstrap JS and your script.js file -->
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-        crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"
-        integrity="sha384-ZTpU2ZFqGk1pKFz37lIjw5I0EtTzfbjU2QzKu7Df35sDaEErvHjo5JsNVTy5iU9p"
-        crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-        crossorigin="anonymous"></script>
-<script src="/static/js/script.js"></script>
-
-</body>
+    </body>
 </html>
