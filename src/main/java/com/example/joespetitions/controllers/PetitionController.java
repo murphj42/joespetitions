@@ -18,6 +18,12 @@ public class PetitionController implements ApplicationRunner {
 
     public List<Petition> petitions = new ArrayList<>(); // Your data structure to store petitions
 
+    @GetMapping("/")
+    public String home(Model model) {
+        model.addAttribute("petitions", petitions);
+        return "view_all";
+    }
+
     // Control navigation to /create_petition page
     @GetMapping("/create_petition")
     public String showCreatePetitionForm(Model model) {
