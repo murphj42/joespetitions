@@ -83,6 +83,7 @@ public class PetitionController implements ApplicationRunner {
     public String searchPetitions(@RequestParam String searchTerm, Model model) {
         List<Petition> searchResults = searchPetitionsByTerm(searchTerm);
         model.addAttribute("searchResults", searchResults);
+        model.addAttribute("searchTerm", searchTerm);
         return "search_results";
     }
 
