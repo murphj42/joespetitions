@@ -16,7 +16,7 @@ import java.util.stream.Collectors;
 @Controller
 public class PetitionController implements ApplicationRunner {
 
-    private List<Petition> petitions = new ArrayList<>(); // Your data structure to store petitions
+    public List<Petition> petitions = new ArrayList<>(); // Your data structure to store petitions
 
     // Control navigation to /create_petition page
     @GetMapping("/create_petition")
@@ -110,7 +110,7 @@ public class PetitionController implements ApplicationRunner {
         this.petitions.addAll(samplePetitions);
     }
 
-    private List<Petition> generateSamplePetitions() {
+    public List<Petition> generateSamplePetitions() {
         List<Petition> samplePetitions = new ArrayList<>();
 
         // Create Petition object and add to ArrayList
