@@ -72,7 +72,7 @@
 
 <!-- Search Results -->
 <div class="container">
-    <h2>Search Results</h2>
+    <h2>Search Results for: "<span th:text="${searchTerm}"></span>"</h2>
 
     <!-- Display search results -->
     <div th:each="petition : ${searchResults}" class="petition mb-4">
